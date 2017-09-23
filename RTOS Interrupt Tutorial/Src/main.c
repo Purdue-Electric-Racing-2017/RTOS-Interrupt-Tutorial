@@ -74,53 +74,54 @@ void StartDefaultTask(void const * argument);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-void Blink_LED1(void);
-void Blink_LED2(void);
-void Blink_LED3(void);
-void Blink_LED4(void);
 
-void Blink_LEDS(void* pvParameters) {
-	for(;;){
-		Blink_LED1();
-		Blink_LED2();
-		Blink_LED3();
-		Blink_LED4();
-	}
+void delay(int time);
+
+void delay(int time) {
+	for(int x = time; x > 0; x--);
 }
 
 void Blink_LED1(void) {
-	for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-		vTaskDelay(100); //delay for 100 ms
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
-		vTaskDelay(100); //delay for 100 ms
+	for(;;) {
+		for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
+			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
+			delay(10000000);
+			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
+			delay(10000000);
+		}
 	}
 }
 
 void Blink_LED2(void) {
-	for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
-		vTaskDelay(100); //delay for 100 ms
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
-		vTaskDelay(100); //delay for 100 ms
+	for(;;) {
+		for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
+			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
+			delay(10000000);
+			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
+			delay(10000000);
+		}
 	}
 }
 
 void Blink_LED3(void) {
-	for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
-		vTaskDelay(100); //delay for 100 ms
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
-		vTaskDelay(100); //delay for 100 ms
+	for(;;){
+		for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
+			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
+			delay(10000000);
+			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
+			delay(10000000);
+		}
 	}
 }
 
 void Blink_LED4(void) {
-	for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
-		vTaskDelay(100); //delay for 100 ms
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET);
-		vTaskDelay(100); //delay for 100 ms
+	for(;;) {
+		for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
+			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
+			delay(10000000);
+			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET);
+			delay(10000000);
+		}
 	}
 }
 /* USER CODE END 0 */
@@ -153,7 +154,10 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
 
-  xTaskCreate(Blink_LEDS, "led_blink", configMINIMAL_STACK_SIZE, 0, 2, 0);
+  xTaskCreate(Blink_LED1, "led_blink1", configMINIMAL_STACK_SIZE, 0, 2, 0);
+  xTaskCreate(Blink_LED2, "led_blink2", configMINIMAL_STACK_SIZE, 0, 2, 0);
+  xTaskCreate(Blink_LED3, "led_blink3", configMINIMAL_STACK_SIZE, 0, 2, 0);
+  xTaskCreate(Blink_LED4, "led_blink4", configMINIMAL_STACK_SIZE, 0, 2, 0);
 
 
   /* USER CODE END 2 */
