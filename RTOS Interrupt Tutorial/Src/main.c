@@ -81,47 +81,35 @@ void delay(int time) {
 	for(int x = time; x > 0; x--);
 }
 
-void Blink_LED1(void) {
+void t_Blink_LED1(void * p) {
 	for(;;) {
 		for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
-			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-			delay(10000000);
-			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
-			delay(10000000);
+			HAL_GPIO_WritePin(GPIOD, LD4_Pin, GPIO_PIN_SET);
+			delay(1000000000);
+			HAL_GPIO_WritePin(GPIOD, LD4_Pin, GPIO_PIN_RESET);
+			delay(1000000000);
 		}
+		vTaskDelay(1000);
 	}
 }
 
-void Blink_LED2(void) {
-	for(;;) {
-		for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
-			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
-			delay(10000000);
-			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
-			delay(10000000);
-		}
-	}
-}
 
-void Blink_LED3(void) {
-	for(;;){
-		for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
-			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
-			delay(10000000);
-			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
-			delay(10000000);
-		}
-	}
-}
 
-void Blink_LED4(void) {
+void t_Blink_LED4(void* p) { //alll functions that are being used as tasks put a t_ in front of the name
 	for(;;) {
+		vTaskSuspend(NULL); //suspned the task
+
+		//blink 4 times and then stop until interrupted
+		vTaskSuspend(t_Blink_LED1); //stop the other task from running
 		for(int y = 0; y < 5; y++) { //blink on and off 5 times then complete
-			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
-			delay(10000000);
-			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET);
-			delay(10000000);
+			HAL_GPIO_WritePin(GPIOD, LD6_Pin, GPIO_PIN_SET);
+			delay(1000000000);
+			HAL_GPIO_WritePin(GPIOD, LD6_Pin, GPIO_PIN_RESET);
+			delay(1000000000);
 		}
+
+		vTaskResume(t_Blink_LED1); //re-enable the original task
+
 	}
 }
 /* USER CODE END 0 */
@@ -154,10 +142,8 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
 
-  xTaskCreate(Blink_LED1, "led_blink1", configMINIMAL_STACK_SIZE, 0, 2, 0);
-  xTaskCreate(Blink_LED2, "led_blink2", configMINIMAL_STACK_SIZE, 0, 2, 0);
-  xTaskCreate(Blink_LED3, "led_blink3", configMINIMAL_STACK_SIZE, 0, 2, 0);
-  xTaskCreate(Blink_LED4, "led_blink4", configMINIMAL_STACK_SIZE, 0, 2, 0);
+  xTaskCreate(t_Blink_LED1, "led_blink1", configMINIMAL_STACK_SIZE, 0, 2, 0);
+  xTaskCreate(t_Blink_LED4, "led_blink4", configMINIMAL_STACK_SIZE, 0, 2, 0);
 
 
   /* USER CODE END 2 */

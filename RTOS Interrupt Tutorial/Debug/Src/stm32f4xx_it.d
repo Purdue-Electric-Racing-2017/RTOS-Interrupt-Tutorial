@@ -43,7 +43,8 @@ Src/stm32f4xx_it.o: ../Src/stm32f4xx_it.c \
  C:/Users/Matt\ Flanagan/Desktop/PER/Tutorials/RTOS\ Interrupt\ Tutorial/Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
  C:/Users/Matt\ Flanagan/Desktop/PER/Tutorials/RTOS\ Interrupt\ Tutorial/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  C:/Users/Matt\ Flanagan/Desktop/PER/Tutorials/RTOS\ Interrupt\ Tutorial/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
- C:/Users/Matt\ Flanagan/Desktop/PER/Tutorials/RTOS\ Interrupt\ Tutorial/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+ C:/Users/Matt\ Flanagan/Desktop/PER/Tutorials/RTOS\ Interrupt\ Tutorial/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ C:/Users/Matt\ Flanagan/Desktop/PER/Tutorials/RTOS\ Interrupt\ Tutorial/Inc/main.h
 
 C:/Users/Matt\ Flanagan/Desktop/PER/Tutorials/RTOS\ Interrupt\ Tutorial/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
@@ -134,3 +135,5 @@ C:/Users/Matt\ Flanagan/Desktop/PER/Tutorials/RTOS\ Interrupt\ Tutorial/Middlewa
 C:/Users/Matt\ Flanagan/Desktop/PER/Tutorials/RTOS\ Interrupt\ Tutorial/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 
 C:/Users/Matt\ Flanagan/Desktop/PER/Tutorials/RTOS\ Interrupt\ Tutorial/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+
+C:/Users/Matt\ Flanagan/Desktop/PER/Tutorials/RTOS\ Interrupt\ Tutorial/Inc/main.h:

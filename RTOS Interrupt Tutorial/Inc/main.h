@@ -122,7 +122,7 @@
 #define MEMS_INT2_GPIO_Port GPIOE
 
 /* USER CODE BEGIN Private defines */
-
+void t_Blink_LED4(void* p);
 /* USER CODE END Private defines */
 
 void _Error_Handler(char *, int);
